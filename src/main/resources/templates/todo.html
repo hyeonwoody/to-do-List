@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<style>
+    .layout {
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout input {
+        width : 100%;
+        box-sizing : border-box;
+    }
+
+    .layout textarea{
+        width : 100%;
+        margin-top : 10px;
+        min-height: 300px;
+    }
+
+</style>
+
+
+<body>
+    <h1>Todo App</h1>
+    <hr>
+    <div class="layout">
+        <form action="/createTodo" method="post">
+            <input   type="text" name="title"/>
+            <textarea name="memo"> </textarea>
+            <button type="submit">할일 추가</button>
+        </form>
+    <hr>
+        <table>
+            <thread>
+                <tr>
+                    <th>id</th>
+                    <th>할 일</th>
+                </tr>
+                <tbody>
+                <tr th:each="todo : ${list}">
+                    <td th:text="${todo.id}">1</td>
+                    <td>
+                        <a th:text="${todo.title}" th:href="@{/showMemo(id=${todo.id})}"></a>
+                            </td>
+                </tr>
+                </tbody>
+            </thread>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Memo Page</title>
+</head>
+
+<style>
+    .layout {
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+</style>
+
+<body>
+
+  <h1 th:text="${todo.title}"></h1>
+  <p th:text="${todo.memo}"></p>
+
+
+</body>
+</html>
