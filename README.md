@@ -44,9 +44,9 @@
 <br>
 
 ## 📖: Libraries Used
->MariaDB Driver
->Thymeleaf
->Lombok
+>MariaDB Driver  
+>Thymeleaf  
+>Lombok  
  
 <br>
 
