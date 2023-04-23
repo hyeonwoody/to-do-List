@@ -8,10 +8,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
-import java.util.List;
+import java.util.Arrays;
+
 
 @Controller //브라우저와 통신
-public class TodoController {
+public class TodoListController {
+
+    @PostMapping("/createTodo")
+    public String createTodo(Todo todo){//String title, String memo //@RequestParam("title") String title, @RequestParam("memo") String memo
+
+        todoService.write(todo);//data Base 저장
+
+
+        for (String s : Arrays.asList(todo.getTitle(), todo.getMemo(), "한글 몰라요")) {
+            System.out.println(s);
+        }
+        return "redirect:/";
+    }
 
     @Autowired
     private TodoService todoService;
@@ -20,18 +33,6 @@ public class TodoController {
     public String main(Model model){
         model.addAttribute("list", todoService.todoList());
         return "todo";
-    }
-
-    @PostMapping("/createTodo")
-    public String createTodo(Todo todo){//String title, String memo //@RequestParam("title") String title, @RequestParam("memo") String memo
-
-        todoService.write(todo);//data Base 저장
-
-
-        System.out.println(todo.getTitle());
-        System.out.println(todo.getMemo());
-        System.out.println("한글 몰라요");
-        return "redirect:/";
     }
 
     @GetMapping("/showMemo") //localhost:12000/showMemo?id=24

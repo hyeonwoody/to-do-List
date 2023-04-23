@@ -44,3 +44,6 @@ out/
 
 ### Hidden Security ###
 *.properties
+
+### README.md (update it on git) ###
+README.md
