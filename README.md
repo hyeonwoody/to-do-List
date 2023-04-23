@@ -5,9 +5,7 @@
 
 ## 🧑‍💻: Intro
 
-
-얼마 살지는 못했지만 지금까지 살아온 동안,  
-내가 느꼈던 건 뚜렷한 목표가 있다는 것은 이를 이루기 위해  
+뚜렷한 목표가 있다는 것은 이를 이루기 위해  
 여러가지의 다른 목표가 새로 생긴다는 겁니다.   
 그 뚜렷한 목표를 이루기 위해 크고 작은 목표를 기록해보려고 합니다.  
 
@@ -28,6 +26,15 @@
 
 ### ERD
 ![To-do List](https://user-images.githubusercontent.com/75844701/233739181-50917960-00ce-473f-9e72-ffcaa8ac67fd.png)
+
+<br>
+
+## 📓: Log
+### 2023.04.20
+Completed Create & Read todoList in Single User
+
+### 2023.04.23
+Added JWT Unit Test.
 
 <br>
 
