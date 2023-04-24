@@ -11,7 +11,12 @@
 
 <br>
 
- ## ✅: Implementation
+## 🎥: Demonstration 
+- ### http://3.12.18.234:12000
+
+</br>
+
+## ✅: Implementation
  
  ### 구현 기능
  - **회원가입** : 사용자는 서비스 이용하기 위해 회원가입.
@@ -36,6 +41,9 @@ Completed Create & Read todoList in Single User
 ### 2023.04.23
 Added JWT Unit Test.
 
+### 2023.04.24
+Implemented AWS EC2 instance and deployed the application server on it.
+
 <br>
 
 ## 📞: Contact
@@ -47,6 +55,7 @@ Added JWT Unit Test.
 
 ## 🧱: Technologies Used
 >Java (JPA, MariaDB Driver)
+>AWS (EC2, RDS)
 
 <br>
 
