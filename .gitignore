@@ -42,7 +42,7 @@ out/
 ### VS Code ###
 .vscode/
 
-### Hidden Security ###
+### .properties ###
 *.properties
 
 ### README.md (update it on git) ###
