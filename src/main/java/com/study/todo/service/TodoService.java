@@ -2,7 +2,6 @@ package com.study.todo.service;
 
 import com.study.todo.entity.Todo;
 import com.study.todo.repository.TodoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.math.BigInteger;
 import java.util.List;
@@ -10,10 +9,13 @@ import java.util.List;
 @Service
 public class TodoService {
 
-    @Autowired //Dependency Injection  Todo todo = newTodo (); todo.setTodo(todo)
-    private TodoRepository todoRepository;
+    private final TodoRepository todoRepository;
+    public TodoService (TodoRepository todoRepository){
+        this.todoRepository = todoRepository;
+    }
 
     public void write(Todo todo){
+        System.out.println("여기도");
         todoRepository.save(todo);
     }
 
@@ -22,7 +24,6 @@ public class TodoService {
     }
 
     public Todo todoView(BigInteger id){
-
         return todoRepository.findById(id).get();
     }
 }

@@ -9,13 +9,11 @@ import java.math.BigInteger;
 
 @Entity
 @Data
-public class Todo {
+public class TodoList {
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
-    private String title;
-    private String memo;
-    private boolean completed;
+
 
 
     public void setId(BigInteger id) {
