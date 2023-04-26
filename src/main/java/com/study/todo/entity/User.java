@@ -1,12 +1,16 @@
 package com.study.todo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
+
 import java.sql.Timestamp;
+
 import lombok.Data;
 
+
+
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,7 +26,15 @@ public class User {
     private Timestamp updatedAt;
     private boolean loggedIn;
 
+    @OneToMany
+    private List<TodoList> myTodoLists;
 
+    @OneToMany
+    private List<TodoList> sharedTodoLists;
+
+    public User () {
+        this.sharedTodoLists = new ArrayList<>();
+    }
 
     public void setId(BigInteger id) {
         this.id = id;
@@ -30,5 +42,15 @@ public class User {
 
     public BigInteger getId() {
         return id;
+    }
+
+    public void addTodoList(TodoList todoList) {
+        this.myTodoLists.add(todoList);
+    }
+
+    public void addHWTodoList (TodoList todoList){
+
+        this.sharedTodoLists.add (todoList);
+        System.out.println("완성");
     }
 }

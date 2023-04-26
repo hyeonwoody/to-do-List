@@ -7,9 +7,10 @@
 <body>
     <h2>register.html</h2>
     <form action="/user/register-confirm" method="post">
-      ID : <input type="text" name="userId"> <br>
-      Password : <input type="text" name="password"> <br>
-      Nickname : <input type="text" name="nickname"> <br>
+      ID : <input type="text" name="userId" placeholder="Enter your ID 2~10" maxlength="10"> <br>
+      Password : <input type="password" name="password" placeholder="Enter your password 7~16" maxlength="18"> <br>
+    Password Confirm : <input type="password" name="passwordConfirm" placeholder="Confirm your password 7~16" maxlength="18"> <br>
+      Nickname : <input type="text" name="nickname" placeholder="Enter your ID 2~15" maxlength="15"> <br>
       <button type="submit">회원가입</button>
     </form>
 </body>

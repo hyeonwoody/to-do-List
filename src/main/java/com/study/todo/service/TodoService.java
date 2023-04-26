@@ -15,7 +15,6 @@ public class TodoService {
     }
 
     public void write(Todo todo){
-        System.out.println("여기도");
         todoRepository.save(todo);
     }
 
