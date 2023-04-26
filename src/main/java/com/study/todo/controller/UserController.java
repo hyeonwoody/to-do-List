@@ -3,12 +3,16 @@ package com.study.todo.controller;
 import com.study.todo.dto.UserRegisterDto;
 import com.study.todo.entity.User;
 import com.study.todo.service.UserService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.net.URI;
 
 @Controller
 @RequestMapping("/user")
@@ -60,7 +64,14 @@ public class UserController {
         user.setPassword(userRegister.getPassword());
         user.setNickname(userRegister.getNickname());
         userService.register(user);
-        return new ResponseEntity(HttpStatus.CREATED);
+
+
+        RedirectView redirectView = new RedirectView("/", true);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(URI.create(redirectView.getUrl()));
+
+        return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
+        
         //return new ResponseEntity(userRegisterResponse, HttpStatus.CREATED);
     }
 
