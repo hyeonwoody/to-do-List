@@ -21,8 +21,10 @@ public class UserController {
     @GetMapping ("/register-form")
     public String registerForm(){
 
-        return "/userPages/registerForm";
+        return "userPages/registerForm";
     }
+
+
 
     @PostMapping("/register-confirm")
     public String registerConfirm(User user){
