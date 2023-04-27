@@ -14,15 +14,17 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private final TodoRepository todoRepository;
-
-    private final TodoListRepository todoListRepository;
 
     private final UserRepository userRepository;
-    public UserService (UserRepository userRepository, TodoListRepository todoListRepository, TodoRepository todoRepository){
+    public UserService (UserRepository userRepository){
         this.userRepository = userRepository;
-        this.todoListRepository = todoListRepository;
-        this.todoRepository = todoRepository;
+    }
+
+    public boolean isDuplicated (String userId){
+        System.out.println("뭔데"+userId);
+        Optional<User> user = userRepository.findByUserId(userId);
+        System.out.println("after"+userId);
+        return user.isPresent();
     }
 
 

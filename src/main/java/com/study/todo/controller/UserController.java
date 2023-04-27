@@ -53,11 +53,22 @@ public class UserController {
                         .nickname((userRegister.getNickname()))
                         .build();
         try {
+
+            if (userService.isDuplicated(userRegister.getUserId())){
+                throw new IllegalArgumentException("ID is already taken. Please choose a different one.");
+            }
+
             dto.validate();
         }
         catch (IllegalArgumentException e){
             System.out.println("Validation error : " + e.getMessage());
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            //String errorMessage = e.getMessage();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("<script>alert('" + e.getMessage() + "'); " +
+                    "window.location.href='/user/register-form';</script>");
+
+
+            //return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to register user");
+            //return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         User user = new User();
         user.setUserId(userRegister.getUserId());
@@ -65,12 +76,13 @@ public class UserController {
         user.setNickname(userRegister.getNickname());
         userService.register(user);
 
-
-        RedirectView redirectView = new RedirectView("/", true);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create(redirectView.getUrl()));
-
-        return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("<script>alert('" + "Successfully Registered" + "'); " +
+                "window.location.href='/';</script>");
+//        RedirectView redirectView = new RedirectView("/", true);
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setLocation(URI.create(redirectView.getUrl()));
+//
+//        return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
         
         //return new ResponseEntity(userRegisterResponse, HttpStatus.CREATED);
     }

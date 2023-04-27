@@ -3,15 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 145px;
+            text-align: right;
+        }
+
+
+
+        input[type="text"],
+        input[type="password"] {
+            vertical-align: middle;
+            width: 410px;
+        }
+        form {
+            text-align: center;
+        }
+        .button-container{
+            text-align: center;
+        }
+    </style>
+    <script>
+        function goBack(){
+            window.history.back();
+        }
+    </script>
 </head>
 <body>
-    <h2>register.html</h2>
-    <form action="/user/register-confirm" method="post">
-      ID : <input type="text" name="userId" placeholder="Enter your ID 2~10" maxlength="10"> <br>
-      Password : <input type="password" name="password" placeholder="Enter your password 7~16" maxlength="18"> <br>
-    Password Confirm : <input type="password" name="passwordConfirm" placeholder="Confirm your password 7~16" maxlength="18"> <br>
-      Nickname : <input type="text" name="nickname" placeholder="Enter your ID 2~15" maxlength="15"> <br>
-      <button type="submit">회원가입</button>
-    </form>
+<h2>register.html</h2>
+<hr>
+<form action="/user/register-confirm" method="post">
+    <label for="userId">ID :</label>
+    <input type="text" name="userId" id="userId" placeholder="Enter your ID (2~10 characters)" maxlength="10">
+    <br>
+
+    <label for="password">Password :</label>
+    <input type="password" name="password" id="password" placeholder="Enter your password with letters, special characters, and numbers" maxlength="16">
+    <br>
+
+    <label for="passwordConfirm">Password Confirm :</label>
+    <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Confirm your password (7~16 characters)" maxlength="16">
+    <br>
+
+    <label for="nickname">Nickname :</label>
+    <input type="text" name="nickname" id="nickname" placeholder="Enter your nickname (2~15 characters)" maxlength="15">
+    <br>
+    <div class="button-container">
+        <button type="button" onclick="goBack()">뒤로</button>
+        <button type="submit">완료</button>
+
+    </div>
+
+</form>
 </body>
 </html>
