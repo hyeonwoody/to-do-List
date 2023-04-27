@@ -21,9 +21,7 @@ public class UserService {
     }
 
     public boolean isDuplicated (String userId){
-        System.out.println("뭔데"+userId);
         Optional<User> user = userRepository.findByUserId(userId);
-        System.out.println("after"+userId);
         return user.isPresent();
     }
 
@@ -39,13 +37,20 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public boolean login(User user) {
+    public boolean login(String userId, String password) {
         /**
          * login.html에서 id, password를 받아오고
          * DB로부터 해당 id 정보를 가져와서 입력받은 password와 대조
          * 일치하면 로그인 성공, 일치하지 않으면 로그인 실패
          */
-        return true;
+
+        Optional<User> user = userRepository.findByUserId(userId);
+        if (user.isPresent()){
+            if (user.get().getPassword().equals (password))
+                return true;
+        }
+        return false;
+
     }
 }
 
