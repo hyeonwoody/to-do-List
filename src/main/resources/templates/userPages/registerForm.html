@@ -10,12 +10,15 @@
             text-align: right;
         }
 
-
-
         input[type="text"],
         input[type="password"] {
+            margin:5px auto;
             vertical-align: middle;
+            padding: 8px;
             width: 410px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         form {
             text-align: center;
@@ -50,8 +53,8 @@
     <input type="text" name="nickname" id="nickname" placeholder="Enter your nickname (2~15 characters)" maxlength="15">
     <br>
     <div class="button-container">
-        <button type="button" onclick="goBack()">뒤로</button>
-        <button type="submit">완료</button>
+        <button type="button" onclick="goBack()">Back</button>
+        <button type="submit">Complete</button>
 
     </div>
 

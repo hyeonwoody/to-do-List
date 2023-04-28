@@ -7,41 +7,79 @@
     <title>Title</title>
 
     <style>
-        h2 {
-            text-align: center;
-        }
         label {
             display: inline-block;
-            width: 145px;
+            width: 220px;
             text-align: right;
+            margin: 10px auto;
+            vertical-align: middle;
         }
 
+        .userIdInput-container{
+            text-align: center;
+        }
 
+        .passwordInput-container{
+            text-align: center;
+        }
 
         input[type="text"],
-        input[type="password"] {
-            vertical-align: middle;
-            width: 410px;
+        input[type="password"],
+        button[type="submit"]{
+            margin: 10px auto;
+            width: 220px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="button"] {
+            width: 350px;
+            margin: 0 auto;
+            text-align: center;
         }
         form {
             text-align: center;
+            display: inline-block;
         }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-container{
+            margin-right: 150px;
+        }
+
+
     </style>
 </head>
 <body>
-<h1>index.html</h1>
+<h2>index.html</h2>
 <hr>
-<a href="/user/register-form"><button>회원가입</button></a>
-<a href="/home"><button>둘러보기</button></a>
+
+<h2 style="text-align: center">Login</h2>
+    <div class="form-container">
+        <form action="/user/login-confirm" method="get">
+            <div class="input-container">
+                <div class="userIdInput-container">
+                    <label for="userId">ID:</label>
+                    <input type="text" name="userId" id="userId" maxlength="10" required><br>
+                </div>
+                <div class="passwordInput-container">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" maxlength="16" required><br><br>
+                </div>
+            </div>
 
 
-<h2 text-align="center">Login</h2>
-<form action="/user/login-confirm" method="post">
-    <label for="userId">ID:</label>
-    <input type="text" name="userId" id="userId" required><br><br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br><br>
-    <input type="submit" value="로그인">
+            <button onclick="window.location.href='/user/register-form'">Sign Up</button>
+            <input type="submit" value="Log In">
+            <button onclick="window.location.href='/home'">Explore without login</button>
+        </form>
+    </div>
+
 </form>
 </body>
 </html>
