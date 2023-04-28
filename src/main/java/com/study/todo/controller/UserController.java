@@ -26,18 +26,27 @@ public class UserController {
         return "userPages/registerForm";
     }
 
-    @PostMapping ("/login-confirm")
-    public String loginConfirm (User user){
+    @GetMapping ("/login-confirm")
+    public ResponseEntity loginConfirm (User user){
         System.out.println("User ID"+ user.getUserId());
         System.out.println("Password" + user.getPassword());
 
         boolean loginResult = userService.login (user.getUserId(), user.getPassword());
 
         if (loginResult){
-            return "home";
+            String message = "You have successfully logged in!";
+            //String script = "<script>alert('" + message + "');</script>";
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("<script>alert('" + message + "'); " +
+                    "window.location.href='/home';</script>");
+            //return "home"+script;
         }
         else {
-            return "index";
+            String message = "Invalid login credentials.";
+            //String script = "<script>alert('" + message + "');</script>";
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("<script>alert('" + message + "'); " +
+                    "window.location.href='/';</script>");
+            //return "/"+script;
         }
     }
 
@@ -63,8 +72,6 @@ public class UserController {
             //String errorMessage = e.getMessage();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("<script>alert('" + e.getMessage() + "'); " +
                     "window.location.href='/user/register-form';</script>");
-
-
             //return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to register user");
             //return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
