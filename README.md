@@ -53,7 +53,7 @@ Implemented AWS EC2 instance and deployed the application server on it.
 <br>
 
 ## 🧱: Technologies Used
->Java (JPA, MariaDB Driver)  
+>Java (JPA, MariaDB Driver)
 >AWS (EC2, RDS)
 
 <br>
