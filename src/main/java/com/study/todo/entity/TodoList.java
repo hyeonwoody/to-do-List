@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,6 +21,7 @@ public class TodoList {
 
     public void setId(BigInteger id) {
         this.id = id;
+        this.todo = new ArrayList<>();
     }
 
     public BigInteger getId() {

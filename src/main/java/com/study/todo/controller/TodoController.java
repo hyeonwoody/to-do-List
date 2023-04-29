@@ -22,13 +22,12 @@ public class TodoController {
     @PostMapping("/createTodo")
     public String createTodo(Todo todo){//String title, String memo //@RequestParam("title") String title, @RequestParam("memo") String memo
         System.out.println("여기까지는 왔다");
+
         //todoListService.write(todoList);
         todoService.write(todo);//data Base 저장
 
 
-        for (String s : Arrays.asList(todo.getTitle(), todo.getMemo(), "한글 몰라요")) {
-            System.out.println(s);
-        }
+        System.out.println(todo);
         return "redirect:/home";
     }
 

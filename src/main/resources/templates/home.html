@@ -16,13 +16,23 @@
     .layout input {
         width : 100%;
         box-sizing : border-box;
+        min-width: 200px;
     }
 
     .layout textarea{
         width : 100%;
         margin-top : 10px;
+        min-width: 200px;
         min-height: 300px;
     }
+
+    .table-container{
+        display: flex;
+        flex-direction: row;
+        min-height: 300px;
+    }
+
+
 
 </style>
 
@@ -37,22 +47,41 @@
             <button type="submit">할일 추가</button>
         </form>
     <hr>
-        <table>
-            <thread>
-                <tr>
-                    <th>id</th>
-                    <th>할 일</th>
-                </tr>
-                <tbody>
-                <tr th:each="todo : ${list}">
-                    <td th:text="${todo.id}">1</td>
-                    <td>
-                        <a th:text="${todo.title}" th:href="@{/showMemo(id=${todo.id})}"></a>
-                            </td>
-                </tr>
-                </tbody>
-            </thread>
+        <div class="table-container">
+            <table>
+                <thread>
+                    <tr>
+                        <th>id</th>
+                        <th>your todo</th>
+                    </tr>
+                    <tbody>
+                    <tr th:each="todo : ${list}">
+                        <td th:text="${todo.id}">1</td>
+                        <td>
+                            <a th:text="${todo.title}" th:href="@{/showMemo(id=${todo.id})}"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </thread>
+            </table>
+            <table>
+                <thread>
+                    <tr>
+                        <th>id</th>
+                        <th>HW's todo</th>
+                    </tr>
+                    <tbody>
+                    <tr th:each="todo : ${list}">
+                        <td th:text="${todo.id}">1</td>
+                        <td>
+                            <a th:text="${todo.title}" th:href="@{/showMemo(id=24)}"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </thread>
         </table>
+        </div>
     </div>
+
 </body>
 </html>

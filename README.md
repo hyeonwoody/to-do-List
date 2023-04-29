@@ -34,14 +34,29 @@
 <br>
 
 ## 📓: Log
-### 2023.04.20
-Completed Create & Read todoList in Single User
 
-### 2023.04.23
-Added JWT Unit Test.
+### 2023.04.28
+Updated login form and registration layout.  
+
+### 2023.04.27
+Seperated Controller, Service, Repository to improve maintainability.  
+Added login method to authenticate users.  
+
+### 2023.04.26
+Fixed html template path.  
+https://velog.io/@hyeonwoody/JavaError-36988-Thymeleaf-template-engine-exception  
+
+### 2023.04.25
+Removed @Autowired, completed user register.  
 
 ### 2023.04.24
-Implemented AWS EC2 instance and deployed the application server on it.
+Implemented AWS EC2 instance and deployed the application server on it.  
+
+### 2023.04.23
+Added JWT Unit Test.  
+
+### 2023.04.20
+Completed Create & Read todoList in Single User.  
 
 <br>
 
@@ -53,7 +68,7 @@ Implemented AWS EC2 instance and deployed the application server on it.
 <br>
 
 ## 🧱: Technologies Used
->Java (JPA, MariaDB Driver)
+>Java (JPA)
 >AWS (EC2, RDS)
 
 <br>
@@ -62,12 +77,13 @@ Implemented AWS EC2 instance and deployed the application server on it.
 >MariaDB Driver  
 >Thymeleaf  
 >Lombok  
+>Servlet  
  
 <br>
 
  ## 🔥: Accomplishments
-- Java Spring Boot에 대한 이해.
-- Java 어노테이션 (Controller, PostMapping, GetMapping SpringBootApp,  ExceptionHandler)
-- Java & Entity 
+- Java Spring Boot.
+- Java Annotations (Controller, PostMapping, GetMapping SpringBootApp,  ExceptionHandler).
+- MVC Pattern (Controller, Service, Repository)
 
 <br>

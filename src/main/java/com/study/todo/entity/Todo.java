@@ -17,6 +17,8 @@ public class Todo {
     private String memo;
     private boolean completed;
 
+    private BigInteger todoListId;
+
 
     public void setId(BigInteger id) {
         this.id = id;

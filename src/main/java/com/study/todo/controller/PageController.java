@@ -9,8 +9,22 @@ public class PageController {
 
     @GetMapping("/hello") //해당 주소로 들어올 때
     @ResponseBody //여기로 들어와라라
-    public String main(){
+    public String hello(){
 
         return "hello";
     }
+
+    @GetMapping("/main")
+    public String main(){
+
+        return "main";
+    }
+
+    @GetMapping("/home/explore")
+    public String explore(){
+        System.out.println("fsjhfkxcvjxkcvjxcklvjxc");
+        return "home";
+    }
+
+
 }

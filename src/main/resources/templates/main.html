@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <style>
+        .layout {
+            width : 500px;
+            margin : 0 auto;
+            margin-top : 40px;
+        }
+
+        .layout input {
+            width : 100%;
+            box-sizing : border-box;
+            min-width: 200px;
+        }
+
+        .layout textarea{
+            width : 100%;
+            margin-top : 10px;
+            min-width: 200px;
+            min-height: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    Hello : <p th:text="${session.userId}" th:name="userId"></p>
+</body>
+<h1>Todo App</h1>
+<hr>
+<div class="layout">
+    <form action="/todoList/write-todo" method="post">
+        <input   type="text" name="title"/>
+        <textarea name="memo"> </textarea>
+        <button type="submit">Add Todo</button>
+    </form>
+</div>
+</html>

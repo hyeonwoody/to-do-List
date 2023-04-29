@@ -3,10 +3,13 @@ package com.study.todo.controller;
 import com.study.todo.dto.UserRegisterDto;
 import com.study.todo.entity.User;
 import com.study.todo.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/user")
@@ -14,8 +17,12 @@ public class UserController {
 
 
     private final UserService userService;
-    public UserController (UserService userService){
+    //private final PasswordEncoder passwordEncoder;
+    public UserController (UserService userService
+            //, PasswordEncoder passwordEncoder
+                           ){
         this.userService = userService;
+        //this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -27,18 +34,19 @@ public class UserController {
     }
 
     @GetMapping ("/login-confirm")
-    public ResponseEntity loginConfirm (User user){
+    public ResponseEntity loginConfirm (User user, HttpSession session){
         System.out.println("User ID"+ user.getUserId());
         System.out.println("Password" + user.getPassword());
 
         boolean loginResult = userService.login (user.getUserId(), user.getPassword());
 
         if (loginResult){
+            session.setAttribute("userId", user.getUserId());
             String message = "You have successfully logged in!";
             //String script = "<script>alert('" + message + "');</script>";
 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("<script>alert('" + message + "'); " +
-                    "window.location.href='/home';</script>");
+                    "window.location.href='/main';</script>");
             //return "home"+script;
         }
         else {
@@ -61,8 +69,12 @@ public class UserController {
                         .build();
         try {
 
-            if (userService.isDuplicated(userRegister.getUserId())){
+            if (userService.isDuplicatedUserId(userRegister.getUserId())){
                 throw new IllegalArgumentException("ID is already taken. Please choose a different one.");
+            }
+
+            if (userService.isDuplicatedNickname(userRegister.getNickname())){
+                throw new IllegalArgumentException("Nickname is already taken. Please choose a different one.");
             }
 
             dto.validate();
@@ -70,8 +82,10 @@ public class UserController {
         catch (IllegalArgumentException e){
             System.out.println("Validation error : " + e.getMessage());
             //String errorMessage = e.getMessage();
+
+
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("<script>alert('" + e.getMessage() + "'); " +
-                    "window.location.href='/user/register-form';</script>");
+                    "window.history.back();</script>");
             //return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to register user");
             //return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }

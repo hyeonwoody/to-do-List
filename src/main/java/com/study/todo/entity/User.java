@@ -33,7 +33,9 @@ public class User {
     private List<TodoList> sharedTodoLists;
 
     public User () {
+        this.myTodoLists = new ArrayList<>();
         this.sharedTodoLists = new ArrayList<>();
+
     }
 
     public void setId(BigInteger id) {
