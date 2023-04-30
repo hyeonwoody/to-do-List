@@ -22,11 +22,56 @@
             min-width: 200px;
             min-height: 300px;
         }
+        .table-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 10px;
+        }
+
+        th {
+            text-align: left;
+            background-color: #f2f2f2;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            white-space: nowrap;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .layout a {
+            display: inline;
+            white-space: nowrap;
+        }
 
     </style>
+
+    <script>
+        function checkboxChanged(checkbox) {
+            if (checkbox.checked) {
+                // Checkbox is checked
+                var itemId = checkbox.dataset.itemId;
+                // Do something with the checked item id
+            } else {
+                // Checkbox is unchecked
+            }
+        }
+    </script>
 </head>
 <body>
-    Hello : <p th:text="${session.userId}" th:name="userId"></p>
+    Hello : <p th:text="${session.nickname}" th:name="nickname"></p>
 </body>
 <h1>Todo App</h1>
 <hr>
@@ -36,5 +81,47 @@
         <textarea name="memo"> </textarea>
         <button type="submit">Add Todo</button>
     </form>
+    <hr>
+    <div class="table-container">
+        <table>
+            <thread>
+                <tr>
+                    <th>completed</th>
+                    <th>your todo</th>
+                </tr>
+                <tbody>
+                <tr th:each="todo : ${yourlist}">
+                    <td>
+                        <input type="checkbox" id="${todo.id}" data-item-id="${todo.id}" th:checked="${todo.completed}" onchange="checkboxChanged(this)"/>
+                    </td>
+<!--                    <td th:text="${todo.id}">1</td>-->
+                    <td>
+                        <a th:text="${todo.title}" th:href="@{/todoList/show-memo(id=${todo.id})}"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </thread>
+        </table>
+        <hr>
+        <table>
+            <thread>
+                <tr>
+                    <th>completed</th>
+                    <th>HW's todo</th>
+                </tr>
+                <tbody>
+                <tr th:each="todoa : ${HWlist}">
+                    <td>
+                    <input type="checkbox" id="${todoa.id}" data-item-id="${todoa.id}" th:checked="${todoa.completed}" />
+                    </td>
+<!--                    <td th:text="${todo.id}">1</td>-->
+                    <td>
+                        <a th:text="${todoa.title}" th:href="@{/todoList/show-memo(id=${todoa.id})}"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </thread>
+        </table>
+    </div>
 </div>
 </html>

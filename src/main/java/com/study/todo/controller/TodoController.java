@@ -37,16 +37,7 @@ public class TodoController {
         return "home";
     }
 
-    @GetMapping("/showMemo") //localhost:12000/showMemo?id=24
-    public String showMemo (Model model, BigInteger id){
-        model.addAttribute("todo", todoService.todoView(id));
 
-        return "showMemo";
-    }
 
-    @ExceptionHandler(Exception.class)
-    public String handleException (Exception e){
-        System.out.println(e);
-        return "error";
-    }
+
 }

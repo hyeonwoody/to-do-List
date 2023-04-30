@@ -34,20 +34,28 @@ public class UserService {
     }
 
 
+
     public void register(User user){
         System.out.println("ㅍㅍ");
 
         TodoList userTodoList = new TodoList();
-        System.out.println("before해봐"+userTodoList);
+        userRepository.save(user);
+
+
+        userTodoList.setOwnerId(user.getId());
         todoListRepository.save(userTodoList);
+
+
         System.out.println("after해봐"+userTodoList);
+
+
         user.addTodoList(userTodoList);
         System.out.println("해봐"+userTodoList);
         System.out.println("해봐ㅁaaaa"+user);
-        userRepository.save(user);
+
     }
 
-    public boolean login(String userId, String password) {
+    public User login(String userId, String password) {
         /**
          * login.html에서 id, password를 받아오고
          * DB로부터 해당 id 정보를 가져와서 입력받은 password와 대조
@@ -60,12 +68,28 @@ public class UserService {
                 user.get().setLoggedIn(true);
                 user.get().setUpdatedAt(new Timestamp(System.currentTimeMillis()));
                 userRepository.save(user.get());
-                return true;
+                return user.orElseThrow();
             }
-
         }
-        return false;
 
+        return null;
+
+    }
+
+    public TodoList findMyTodoList (BigInteger id){
+        System.out.println("ID 값 :ㅣ "+id);
+        return todoListRepository.findByOwnerId(id);
+    }
+
+    public Optional<User> findByUserId(Object userId) {
+        System.out.println("옵젝트"+userId);
+        return userRepository.findByUserId((String) userId);
+    }
+
+    public Optional<User> findById(BigInteger id) {
+        if (id == null)
+            id = BigInteger.valueOf(6);
+        return userRepository.findById(id);
     }
 }
 

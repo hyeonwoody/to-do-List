@@ -1,7 +1,6 @@
 package com.study.todo.repository;
 
 import com.study.todo.entity.Todo;
-import jakarta.persistence.Table;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

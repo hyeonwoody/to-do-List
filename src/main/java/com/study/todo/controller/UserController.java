@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -38,10 +40,11 @@ public class UserController {
         System.out.println("User ID"+ user.getUserId());
         System.out.println("Password" + user.getPassword());
 
-        boolean loginResult = userService.login (user.getUserId(), user.getPassword());
+        User loginUser = userService.login (user.getUserId(), user.getPassword());
 
-        if (loginResult){
-            session.setAttribute("userId", user.getUserId());
+        if (loginUser != null){
+            session.setAttribute("id", loginUser.getId());
+            session.setAttribute("nickname", loginUser.getNickname());
             String message = "You have successfully logged in!";
             //String script = "<script>alert('" + message + "');</script>";
 
