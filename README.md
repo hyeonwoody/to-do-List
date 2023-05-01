@@ -68,8 +68,8 @@ Completed Create & Read todoList in Single User.
 <br>
 
 ## 🧱: Technologies Used
->Java (JPA)
->AWS (EC2, RDS)
+>Java (JPA)  
+>AWS (EC2, RDS)  
 
 <br>
 
